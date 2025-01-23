@@ -1,49 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valyuta Kalkulyatoru</title>
+    <title>valyuta</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
+
 <body>
+
+
     <h1>Valyuta Kalkulyatoru</h1>
     <div class="row">
-        <label for="meblegAZN">AZN:</label>
-        <input type="number" id="meblegAZN"   />
+        <label for="meblegAZN">Məbləğ:</label>
+        <input type="number" id="meblegAZN" placeholder="AZN" />
     </div>
-    
-    <div class="row">
-        <label for="meblegUSD">USD:</label>
-        <input type="text" id="meblegUSD"/>
-    </div>
-    
-    <div class="row">
-        <label for="meblegEUR">EUR:</label>
-        <input type="text" id="meblegEUR"/>
-    </div>
-</body>
 
+    <div class="row">
+        <label for="valyutaSec">Valyuta:</label>
+        <select id="valyutaSec">
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+        </select>
+    </div>
+
+    <div class="row">
+        <label for="meblegNetice">Nəticə:</label>
+        <input type="text" id="meblegNetice" readonly />
+    </div>
 
     <script>
 
-    
+        const mezenne = {
+            USD: 1.7, EUR: 1.8
+        };
 
-        
-        document.getElementById('meblegAZN').addEventListener('input', function() {
-            const mebleg = +(document.getElementById('meblegAZN').value);
-        
-            if (mebleg) {
-                const meblegUSD = mebleg * 1.7;
-                const meblegEUR = mebleg * 1.8;
-                
-                document.getElementById('meblegUSD').value = `${meblegUSD.toFixed(2)} USD`;
-                document.getElementById('meblegEUR').value = `${meblegEUR.toFixed(2)} EUR`;
+        document.getElementById('meblegAZN').addEventListener('input', hesabla);
+        document.getElementById('valyutaSec').addEventListener('change', hesabla);
+
+        function hesabla() {
+            const mebleg = parseFloat(document.getElementById('meblegAZN').value);
+            const secilenValyuta = document.getElementById('valyutaSec').value;
+
+            if (!isNaN(mebleg)) {
+                const netice = mebleg * mezenne[secilenValyuta];
+                document.getElementById('meblegNetice').value = `${netice.toFixed(2)} ${secilenValyuta}`;
             } else {
-                document.getElementById('meblegUSD').value = '';
-                document.getElementById('meblegEUR').value = '';
+                document.getElementById('meblegNetice').value = '';
             }
-        });
+        }
     </script>
 </body>
+
+
 </html>
