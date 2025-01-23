@@ -44,7 +44,7 @@
             const mebleg = parseFloat(document.getElementById('meblegAZN').value);
             const secilenValyuta = document.getElementById('valyutaSec').value;
 
-            if (!isNaN(mebleg)) {
+            if (mebleg) {
                 const netice = mebleg * mezenne[secilenValyuta];
                 document.getElementById('meblegNetice').value = `${netice.toFixed(2)} ${secilenValyuta}`;
             } else {
