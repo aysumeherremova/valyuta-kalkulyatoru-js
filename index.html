@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valyuta Kalkulyatoru</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Valyuta Kalkulyatoru</h1>
+    <div class="row">
+        <label for="meblegAZN">AZN:</label>
+        <input type="number" id="meblegAZN"   />
+    </div>
+    
+    <div class="row">
+        <label for="meblegUSD">USD:</label>
+        <input type="text" id="meblegUSD" />
+    </div>
+    
+    <div class="row">
+        <label for="meblegEUR">EUR:</label>
+        <input type="text" id="meblegEUR"  />
+    </div>
+</body>
+
+
+    <script>
+
+        const mezenneUSD = 1.7;  
+        const mezenneEUR = 1.8;  
+
+        
+        document.getElementById('meblegAZN').addEventListener('input', function() {
+            const mebleg = +(document.getElementById('meblegAZN').value);
+        
+            if (mebleg) {
+                const meblegUSD = mebleg * mezenneUSD;
+                const meblegEUR = mebleg * mezenneEUR;
+                
+                document.getElementById('meblegUSD').value = `${meblegUSD.toFixed(2)} USD`;
+                document.getElementById('meblegEUR').value = `${meblegEUR.toFixed(2)} EUR`;
+            } else {
+                document.getElementById('meblegUSD').value = '';
+                document.getElementById('meblegEUR').value = '';
+            }
+        });
+    </script>
+</body>
+</html>
