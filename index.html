@@ -15,28 +15,27 @@
     
     <div class="row">
         <label for="meblegUSD">USD:</label>
-        <input type="text" id="meblegUSD" />
+        <input type="text" id="meblegUSD"/>
     </div>
     
     <div class="row">
         <label for="meblegEUR">EUR:</label>
-        <input type="text" id="meblegEUR"  />
+        <input type="text" id="meblegEUR"/>
     </div>
 </body>
 
 
     <script>
 
-        const mezenneUSD = 1.7;  
-        const mezenneEUR = 1.8;  
+    
 
         
         document.getElementById('meblegAZN').addEventListener('input', function() {
             const mebleg = +(document.getElementById('meblegAZN').value);
         
             if (mebleg) {
-                const meblegUSD = mebleg * mezenneUSD;
-                const meblegEUR = mebleg * mezenneEUR;
+                const meblegUSD = mebleg * 1.7;
+                const meblegEUR = mebleg * 1.8;
                 
                 document.getElementById('meblegUSD').value = `${meblegUSD.toFixed(2)} USD`;
                 document.getElementById('meblegEUR').value = `${meblegEUR.toFixed(2)} EUR`;
